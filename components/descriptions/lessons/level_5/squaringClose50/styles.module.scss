@@ -1,0 +1,40 @@
+.description_rounded {
+  border-radius: 50%;
+  border: 2px solid black;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.4rem !important;
+  text-align: center;
+  margin: auto;
+  line-height: 1.3;
+  color: #f00;
+}
+
+.description_cell {
+  // border: 2px solid rgb(204, 16, 16);
+  padding: 0;
+}
+
+.example_rounded_cell {
+  padding: 0;
+
+  .example_rounded_field {
+    position: relative;
+    border-radius: 50% !important;
+    border: 2px solid black !important;
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.4rem !important;
+    text-align: center;
+    margin: auto;
+    line-height: 2;
+
+    span {
+      height: 2rem;
+      position: absolute;
+      top: -0.7rem;
+      left: -1.4rem;
+      font-size: 2rem;
+    }
+  }
+}

@@ -115,9 +115,7 @@ function SimpleAddition() {
 
         <ExerciseSimple
           onStopExercise={onStopExercise}
-          onChangeUserAnswer={(e: React.ChangeEvent<HTMLInputElement>) =>
-            set__userAnswer(e.target.value)
-          }
+          onChangeUserAnswer={(e) => set__userAnswer(e.target.value)}
           onAnswer={onAnswer}
           example={example!}
           operator={operators[0]}

@@ -1,0 +1,100 @@
+.digit_container {
+  // border: 1px solid blue;
+  // padding: 5px 0px;
+  .digit_item {
+    margin-left: 3px;
+
+    .digit_field {
+      input {
+        padding: 0;
+        width: 0.8rem;
+        height: 1.2rem;
+        text-align: center;
+        font-size: 1.5rem;
+        border: 2px solid #f00;
+
+        &:focus,
+        &:active {
+          border: 2px solid transparent;
+        }
+      }
+    }
+  }
+}
+
+.check_field {
+  div {
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid #0f0;
+    border-radius: 50%;
+    font-size: 2rem;
+    color: #f00;
+    &:hover {
+      border: 2px solid #f00;
+    }
+  }
+}
+
+.number_field {
+  text-align: right;
+  letter-spacing: 0.5rem !important;
+}
+
+.description_rounded {
+  border-radius: 50%;
+  border: 2px solid black;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.4rem !important;
+  text-align: center;
+  margin: auto;
+  line-height: 1.1;
+  color: #f00;
+}
+.description_common {
+  text-align: center;
+}
+
+.description_cell {
+  // border: 2px solid rgb(204, 16, 16);
+  padding: 0;
+}
+
+.substr_table {
+  margin: auto;
+  width: 150px !important;
+}
+.substr_row {
+  &:last-child {
+    border-top: 2px solid black;
+  }
+}
+
+.substr_cell {
+  // border: 1px solid yellow;
+  padding: 0 !important;
+}
+.substr_field {
+  // border: 1px solid rgb(0, 255, 149);
+  text-align: right;
+  position: relative;
+
+  sup,
+  sub {
+    font-size: 0.8rem;
+    position: absolute;
+    left: 0.4rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    // border: 1px solid rgb(0, 255, 149);
+    text-align: center;
+    vertical-align: middle;
+  }
+  sub {
+    top: 0.2rem;
+  }
+  sup {
+    top: 1.2rem;
+  }
+}

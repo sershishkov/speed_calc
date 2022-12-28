@@ -2,11 +2,11 @@ import React from 'react';
 import Typography from '@mui/material/Typography';
 
 function DescAccent({
-  children,
   align = 'center',
+  children,
 }: {
+  align?: string;
   children: React.ReactNode;
-  align: string;
 }) {
   return (
     <Typography

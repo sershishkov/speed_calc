@@ -33,3 +33,11 @@ export interface I_example_simple_Obj {
   rightAnswer: number;
   done: boolean;
 }
+
+export interface I_ExampleStarOrDot_Level_7 {
+  digit: number | string;
+  isStar: boolean;
+  isDot: boolean;
+  color?: string;
+  dots?: string;
+}

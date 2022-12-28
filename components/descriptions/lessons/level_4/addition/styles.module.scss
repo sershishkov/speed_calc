@@ -1,0 +1,42 @@
+.digit_container {
+  // border: 1px solid blue;
+  // padding: 5px 0px;
+  .digit_item {
+    margin-right: 5px;
+
+    .digit_field {
+      input {
+        padding: 0;
+        width: 0.8rem;
+        height: 1.2rem;
+        text-align: center;
+        font-size: 1.5rem;
+        border: 2px solid #f00;
+
+        &:focus,
+        &:active {
+          border: 2px solid transparent;
+        }
+      }
+    }
+  }
+}
+
+.check_field {
+  div {
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid #0f0;
+    border-radius: 50%;
+    font-size: 2rem;
+    color: #f00;
+    &:hover {
+      border: 2px solid #f00;
+    }
+  }
+}
+
+.number_field {
+  text-align: right;
+  letter-spacing: 0.5rem !important;
+}

@@ -1,0 +1,152 @@
+.desc_tablecontainer {
+  .desc_table {
+    width: 250px;
+    margin: auto;
+    .desc_table_body {
+      th,
+      td {
+        padding: 0;
+      }
+      .desc_table_row {
+        .desc_cell_divider {
+          h6 {
+            text-align: right;
+            color: #f00;
+          }
+        }
+        .desc_cell_divident {
+          border-left: 1px solid black;
+          border-bottom: 1px solid black;
+          sup {
+            color: brown;
+          }
+          h6 {
+            color: #0f0;
+          }
+        }
+
+        .desc_cell_result {
+          h6 {
+            color: #00f;
+          }
+        }
+      }
+    }
+  }
+}
+
+.example_tablecontainer {
+  .example_table {
+    width: 300px;
+    margin: 2rem auto;
+    .example_table_body {
+      th,
+      td {
+        padding: 0;
+      }
+      .example_table_row {
+        .example_cell_divider {
+          h6 {
+            text-align: right;
+            color: #f00;
+          }
+        }
+        .example_cell_divident {
+          border-left: 2px solid black;
+          border-bottom: 2px solid black;
+
+          h6 {
+            color: #0f0;
+            text-align: left;
+            letter-spacing: 0.67rem;
+          }
+        }
+
+        .example_cell_result {
+          h6 {
+            color: #00f;
+          }
+        }
+        .example_cell_reminder {
+          // border: 1px solid #e22626;
+          padding: 0;
+          span {
+            color: #f00;
+          }
+          input {
+            color: #00f;
+            padding: 0;
+            width: 2rem;
+            height: 1.2rem;
+            text-align: center;
+            font-size: 1.5rem;
+            margin: auto;
+            border: 2px solid blue;
+          }
+        }
+      }
+    }
+  }
+}
+
+.digit_container {
+  // border: 1px solid blue;
+  // padding: 5px 0px;
+  .digit_item {
+    margin-right: 8px;
+
+    .digit_field {
+      input {
+        padding: 0;
+        width: 0.8rem;
+        height: 1.2rem;
+        text-align: center;
+        font-size: 1.5rem;
+        border: 2px solid blue;
+        color: #00f;
+
+        &:focus,
+        &:active {
+          border: 2px solid transparent;
+        }
+      }
+    }
+  }
+}
+
+.divident_container {
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  .divident_item {
+    position: relative;
+    margin-right: 3px;
+    .divident_hint {
+      position: absolute;
+      top: -0.7rem;
+      left: -1rem;
+      div {
+        border-radius: 50%;
+      }
+      input {
+        border-radius: 50%;
+        padding: 0;
+        width: 1rem;
+        height: 1rem;
+        text-align: center;
+        font-size: 0.8rem;
+        border: 2px solid blue;
+        color: blue;
+
+        &:focus,
+        &:active {
+          border: 2px solid transparent;
+        }
+      }
+    }
+    .divident_field {
+      color: #00ff00;
+      // font-size: 1.3rem;
+    }
+  }
+}
