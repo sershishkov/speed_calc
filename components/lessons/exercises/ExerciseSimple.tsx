@@ -10,7 +10,10 @@ import DescrCellMain from '../../ui/description/DescrCellMain';
 import ExerciseHeader from '../../ui/description/ExerciseHeader';
 import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
 
-import { generateExample__AddMultSub } from '../../../utils/generateExample';
+import {
+  generateExample__AddMultSub,
+  generateExample__SimpleDivision,
+} from '../../../utils/generateExample';
 
 function ExerciseSimple({
   displayExample,
@@ -24,7 +27,7 @@ function ExerciseSimple({
 }: {
   displayExample: boolean;
   onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
-  example: generateExample__AddMultSub;
+  example: generateExample__AddMultSub | generateExample__SimpleDivision;
   operator: string;
   userAnswer: string;
   onChangeUserAnswer: React.ChangeEventHandler<HTMLInputElement>;
