@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 
-// import { useTheme } from '@mui/material/styles';
-// import useMediaQuery from '@mui/material/useMediaQuery';
 import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -20,6 +18,8 @@ import DescrCellRoundHintNumber from '../../ui/description/DescrCellRoundHintNum
 import DescrCellRoundRefNumber from '../../ui/description/DescrCellRoundRefNumber';
 import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
 
+import { generateExample__AddMultSub } from '../../../utils/generateExample';
+
 function ExercieMultWithHints({
   displayExample,
   onStopExercise,
@@ -33,16 +33,27 @@ function ExercieMultWithHints({
   showPlusHints,
   showMinusHints,
   refNumber,
+}: {
+  displayExample: boolean;
+  onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
+  example: generateExample__AddMultSub;
+  operator: string;
+  userAnswer: string;
+  onChangeUserAnswer: React.ChangeEventHandler<HTMLInputElement>;
+  onAnswer: () => void;
+  numberOf_Task: number;
+  showHints: boolean;
+  showPlusHints: boolean;
+  showMinusHints: boolean;
+  refNumber: number;
 }) {
   useEffect(() => {
     if (displayExample) {
       const userAnswer__input = document.getElementById('userAnswer');
-      userAnswer__input.focus();
+      userAnswer__input!.focus();
     }
   }, [displayExample]);
 
-  // const theme = useTheme();
-  // const matches = useMediaQuery(theme.breakpoints.up('sm'));
   return (
     <Grid item sx={{ display: displayExample ? 'block' : 'none' }}>
       <Grid item sx={{ flex: 1, padding: '10px' }}>
@@ -86,7 +97,7 @@ function ExercieMultWithHints({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberLeft > refNumber
-                        ? +example.numberLeft - refNumber
+                        ? `${+example.numberLeft - refNumber}`
                         : ''
                     }
                   />
@@ -98,18 +109,18 @@ function ExercieMultWithHints({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberRight > refNumber
-                        ? example.numberRight - refNumber
+                        ? `${example.numberRight - refNumber}`
                         : ''
                     }
                   />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>
-                  <DescrCellRoundRefNumber text={refNumber} />
+                  <DescrCellRoundRefNumber text={`${refNumber}`} />
                 </TableCell>
                 <TableCell>
                   <DescrCellMain align='center'>
@@ -138,7 +149,6 @@ function ExercieMultWithHints({
                     // display={matches ? 'block' : undefined}
                     name='userAnswer'
                     label='Ответ'
-                    type='number'
                     id='userAnswer'
                     value={userAnswer}
                     onChange={onChangeUserAnswer}
@@ -146,7 +156,7 @@ function ExercieMultWithHints({
                       if (e.key === 'Enter') {
                         const onAnswer_Button =
                           document.getElementById('answerButton');
-                        onAnswer_Button.focus();
+                        onAnswer_Button!.focus();
                       }
                     }}
                   />
@@ -165,30 +175,28 @@ function ExercieMultWithHints({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberLeft < refNumber
-                        ? refNumber - example.numberLeft
+                        ? `${refNumber - example.numberLeft}`
                         : ''
                     }
                   />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain variant='h3' align='right'>
-                    -
-                  </DescrCellMain>
+                  <DescrCellMain align='right'>-</DescrCellMain>
                 </TableCell>
                 <TableCell>
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberRight < refNumber
-                        ? refNumber - example.numberRight
+                        ? `${refNumber - example.numberRight}`
                         : ''
                     }
                   />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='center'></DescrCellMain>
+                  <DescrCellMain align='center'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
 
@@ -196,9 +204,9 @@ function ExercieMultWithHints({
                 <TableCell colSpan={6}>
                   <ButtonOk
                     id='answerButton'
-                    variant='contained'
                     onClick={onAnswer}
                     disabled={userAnswer.length < 1}
+                    tabIndex={undefined}
                   >
                     {numberOf_Task}
                   </ButtonOk>
