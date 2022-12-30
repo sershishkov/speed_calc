@@ -34,6 +34,21 @@ export interface I_example_simple_Obj {
   done: boolean;
 }
 
+export interface I_example_CheckAnswer_Obj {
+  example: string;
+  userAnswer_CheckNumberLeft: string;
+  userAnswer_CheckNumberRight: string;
+  userAnswer_CheckResultLeft: string;
+  userAnswer_CheckResultRight: string;
+
+  checkNumberLeft: number;
+  checkNumberRight: number;
+  checkResultLeft: number;
+  checkResultRight: number;
+
+  doneCheck: boolean;
+}
+
 export interface I_ExampleStarOrDot_Level_7 {
   digit: number | string;
   isStar: boolean;

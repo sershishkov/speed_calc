@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 
-// import { useTheme } from '@mui/material/styles';
-// import useMediaQuery from '@mui/material/useMediaQuery';
 import Paper from '@mui/material/Paper';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
@@ -16,6 +14,8 @@ import ButtonOk from '../../ui/buttons/ButtonOk';
 import ExerciseHeader from '../../ui/description/ExerciseHeader';
 import InputCircleCheck from '../../ui/inputs/InputCircleCheck';
 import DescrCellMain from '../../ui/description/DescrCellMain';
+
+import { generateExample__ForCheckMultiplication } from '../../../utils/generateExample';
 
 function ExerciseCheck({
   displayExample,
@@ -34,13 +34,30 @@ function ExerciseCheck({
 
   onAnswer,
   numberOf_Task,
+}: {
+  displayExample: boolean;
+  onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
+  example: generateExample__ForCheckMultiplication;
+  operator: string;
+  userAnswer_CheckNumberLeft: string;
+  userAnswer_CheckNumberRight: string;
+  userAnswer_CheckResultLeft: string;
+  userAnswer_CheckResultRight: string;
+
+  setAnswer_CheckNumberLeft: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswer_CheckNumberRight: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswer_CheckResultLeft: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswer_CheckResultRight: React.ChangeEventHandler<HTMLInputElement>;
+
+  onAnswer: () => void;
+  numberOf_Task: number;
 }) {
   useEffect(() => {
     if (displayExample) {
       const userAnswer_CheckNumberLeft__input = document.getElementById(
         'userAnswer_CheckNumberLeft'
       );
-      userAnswer_CheckNumberLeft__input.focus();
+      userAnswer_CheckNumberLeft__input!.focus();
     }
   }, [displayExample]);
   // const theme = useTheme();
@@ -110,7 +127,7 @@ function ExerciseCheck({
                             'userAnswer_CheckNumberRight'
                           );
 
-                        userAnswer_CheckNumberRight_input.focus();
+                        userAnswer_CheckNumberRight_input!.focus();
                       }
                     }}
                   />
@@ -132,7 +149,7 @@ function ExerciseCheck({
                         const userAnswer_CheckResultLeft_input =
                           document.getElementById('userAnswer_CheckResultLeft');
 
-                        userAnswer_CheckResultLeft_input.focus();
+                        userAnswer_CheckResultLeft_input!.focus();
                       }
                     }}
                   />
@@ -161,7 +178,7 @@ function ExerciseCheck({
                             'userAnswer_CheckResultRight'
                           );
 
-                        userAnswer_CheckResultRight_input.focus();
+                        userAnswer_CheckResultRight_input!.focus();
                       }
                     }}
                   />
@@ -184,7 +201,7 @@ function ExerciseCheck({
                         const answerButton =
                           document.getElementById('answerButton');
 
-                        answerButton.focus();
+                        answerButton!.focus();
                       }
                     }}
                   />
@@ -195,7 +212,6 @@ function ExerciseCheck({
                 <TableCell colSpan={5}>
                   <ButtonOk
                     id='answerButton'
-                    variant='contained'
                     onClick={onAnswer}
                     disabled={
                       userAnswer_CheckNumberLeft.length < 1 ||
@@ -203,6 +219,7 @@ function ExerciseCheck({
                       userAnswer_CheckResultLeft.length < 1 ||
                       userAnswer_CheckResultRight.length < 1
                     }
+                    tabIndex={undefined}
                   >
                     {numberOf_Task}
                   </ButtonOk>
