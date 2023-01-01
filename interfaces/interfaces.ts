@@ -49,6 +49,26 @@ export interface I_example_CheckAnswer_Obj {
   doneCheck: boolean;
 }
 
+export interface I_exampleSimple_and_CheckAnswer_Obj {
+  example: string;
+
+  userAnswer: string;
+  userAnswer_CheckNumberLeft: string;
+  userAnswer_CheckNumberRight: string;
+  userAnswer_CheckResultLeft: string;
+  userAnswer_CheckResultRight: string;
+
+  resultRight: number;
+  checkNumberLeft: number;
+  checkNumberRight: number;
+  checkResultLeft: number;
+  checkResultRight: number;
+
+  doneExample: boolean;
+  doneCheck: boolean;
+  doneExcercise: boolean;
+}
+
 export interface I_ExampleStarOrDot_Level_7 {
   digit: number | string;
   isStar: boolean;

@@ -18,6 +18,8 @@ import DescrCellRoundHintNumber from '../../ui/description/DescrCellRoundHintNum
 import DescrCellRoundRefNumberBig from '../../ui/description/DescrCellRoundRefNumberBig';
 import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
 
+import { genExample_Mult__WithDifferentRangers } from '../../../utils/generateExample';
+
 function ExerciseMultWithHintsTwoRef({
   displayExample,
   onStopExercise,
@@ -32,11 +34,26 @@ function ExerciseMultWithHintsTwoRef({
   showMinusHints,
   referenceNumber1,
   referenceNumber2,
+}: {
+  displayExample: boolean;
+  onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
+  example: genExample_Mult__WithDifferentRangers;
+  operator: string;
+  userAnswer: string;
+  onChangeUserAnswer: React.ChangeEventHandler<HTMLInputElement>;
+  onAnswer: () => void;
+  numberOf_Task: number;
+  showHints: boolean;
+  showPlusHints: boolean;
+  showMinusHints: boolean;
+
+  referenceNumber1: number;
+  referenceNumber2: number;
 }) {
   useEffect(() => {
     if (displayExample) {
       const userAnswer__input = document.getElementById('userAnswer');
-      userAnswer__input.focus();
+      userAnswer__input!.focus();
     }
   }, [displayExample]);
   return (
@@ -72,21 +89,23 @@ function ExerciseMultWithHintsTwoRef({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberLeft > referenceNumber1
-                        ? (example.numberLeft - referenceNumber1) *
-                          referenceNumber2
+                        ? `${
+                            (example.numberLeft - referenceNumber1) *
+                            referenceNumber2
+                          }`
                         : ''
                     }
                   />
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell></TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='center'></DescrCellMain>
+                  <DescrCellMain align='center'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
 
@@ -102,7 +121,7 @@ function ExerciseMultWithHintsTwoRef({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberLeft > referenceNumber1
-                        ? example.numberLeft - referenceNumber1
+                        ? `${example.numberLeft - referenceNumber1}`
                         : ''
                     }
                   />
@@ -115,17 +134,19 @@ function ExerciseMultWithHintsTwoRef({
                     text={
                       example &&
                       example.numberRight > referenceNumber1 * referenceNumber2
-                        ? referenceNumber1 * referenceNumber2 -
-                          example.numberRight
+                        ? `${
+                            referenceNumber1 * referenceNumber2 -
+                            example.numberRight
+                          }`
                         : ''
                     }
                   />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='center'></DescrCellMain>
+                  <DescrCellMain align='center'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
 
@@ -149,15 +170,12 @@ function ExerciseMultWithHintsTwoRef({
                   </DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain variant='h3' align='center'>
-                    {operators[4]}
-                  </DescrCellMain>
+                  <DescrCellMain align='center'>{operators[4]}</DescrCellMain>
                 </TableCell>
                 <TableCell>
                   <InputUserAnswerSimple
                     name='userAnswer'
                     label='Ответ'
-                    type='number'
                     id='userAnswer'
                     value={userAnswer}
                     onChange={onChangeUserAnswer}
@@ -166,7 +184,7 @@ function ExerciseMultWithHintsTwoRef({
                         const answerButton =
                           document.getElementById('answerButton');
 
-                        answerButton.focus();
+                        answerButton!.focus();
                       }
                     }}
                   />
@@ -185,7 +203,7 @@ function ExerciseMultWithHintsTwoRef({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberLeft < referenceNumber1
-                        ? referenceNumber1 - example.numberLeft
+                        ? `${referenceNumber1 - example.numberLeft}`
                         : ''
                     }
                   />
@@ -198,17 +216,19 @@ function ExerciseMultWithHintsTwoRef({
                     text={
                       example &&
                       example.numberRight < referenceNumber1 * referenceNumber2
-                        ? referenceNumber1 * referenceNumber2 -
-                          example.numberRight
+                        ? `${
+                            referenceNumber1 * referenceNumber2 -
+                            example.numberRight
+                          }`
                         : ''
                     }
                   />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='center'></DescrCellMain>
+                  <DescrCellMain align='center'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
 
@@ -224,21 +244,23 @@ function ExerciseMultWithHintsTwoRef({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberLeft < referenceNumber1
-                        ? (referenceNumber1 - example.numberLeft) *
-                          referenceNumber2
+                        ? `${
+                            (referenceNumber1 - example.numberLeft) *
+                            referenceNumber2
+                          }`
                         : ''
                     }
                   />
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell></TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='center'></DescrCellMain>
+                  <DescrCellMain align='center'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
 
@@ -246,9 +268,9 @@ function ExerciseMultWithHintsTwoRef({
                 <TableCell colSpan={8}>
                   <ButtonOk
                     id='answerButton'
-                    variant='contained'
                     onClick={onAnswer}
                     disabled={userAnswer.length < 1}
+                    tabIndex={undefined}
                   >
                     {numberOf_Task}
                   </ButtonOk>

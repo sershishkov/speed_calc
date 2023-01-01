@@ -5,9 +5,9 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 
-import DescrCellMain from '../../ui/description/DescrCellMain';
-import DescrCellRoundHintNumber from '../../ui/description/DescrCellRoundHintNumber';
-import DescrCellRoundRefNumberBig from '../../ui/description/DescrCellRoundRefNumberBig';
+import DescrCellMain from '../../../ui/description/DescrCellMain';
+import DescrCellRoundHintNumber from '../../../ui/description/DescrCellRoundHintNumber';
+import DescrCellRoundRefNumberBig from '../../../ui/description/DescrCellRoundRefNumberBig';
 
 function ExampleTableMultTwoRefNumbers({
   row_1_hintPlusLeft,
@@ -33,6 +33,30 @@ function ExampleTableMultTwoRefNumbers({
   displayRow_4,
   displayRow_5,
   displayRow_results,
+}: {
+  row_1_hintPlusLeft: string;
+
+  row_2_hintPlusLeft: string;
+  row_2_hintPlusRight: string;
+  row_2_valueToAdd: string;
+
+  row_main_refNumber: string;
+  row_main_numberLeft: string;
+  row_main_numberRight: string;
+  row_main_valueIntermediate: string;
+
+  row_4_hintMinusLeft: string;
+  row_4_hintMinusRight: string;
+  row_4_valueToMinus: string;
+
+  row_5_hintMinusLeft: string;
+
+  row_result_valueResult: string;
+  displayRow_1: boolean;
+  displayRow_2: boolean;
+  displayRow_4: boolean;
+  displayRow_5: boolean;
+  displayRow_results: boolean;
 }) {
   return (
     <TableContainer component={Paper} sx={{ marginTop: '1rem' }}>
@@ -52,16 +76,16 @@ function ExampleTableMultTwoRefNumbers({
               />
             </TableCell>
             <TableCell sx={{ pr: 0 }}>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
             <TableCell>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
             <TableCell sx={{ pr: 0 }}>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
             <TableCell>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
           </TableRow>
 
@@ -87,7 +111,7 @@ function ExampleTableMultTwoRefNumbers({
               />
             </TableCell>
             <TableCell sx={{ pr: 0 }}>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
             <TableCell>
               <DescrCellMain align='right'>
@@ -147,7 +171,7 @@ function ExampleTableMultTwoRefNumbers({
               />
             </TableCell>
             <TableCell sx={{ pr: 0 }}>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
             <TableCell>
               <DescrCellMain align='right'>
@@ -170,16 +194,16 @@ function ExampleTableMultTwoRefNumbers({
               />
             </TableCell>
             <TableCell sx={{ pr: 0 }}>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
             <TableCell>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
             <TableCell sx={{ pr: 0 }}>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
             <TableCell>
-              <DescrCellMain align='right'></DescrCellMain>
+              <DescrCellMain align='right'>{''}</DescrCellMain>
             </TableCell>
           </TableRow>
 

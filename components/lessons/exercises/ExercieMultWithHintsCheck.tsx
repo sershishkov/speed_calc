@@ -19,6 +19,8 @@ import DescrCellRoundHintNumber from '../../ui/description/DescrCellRoundHintNum
 import DescrCellRoundRefNumber from '../../ui/description/DescrCellRoundRefNumber';
 import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
 
+import { generateExample__ForCheckMultiplication } from '../../../utils/generateExample';
+
 function ExercieMultWithHintsCheck({
   displayExample,
   onStopExercise,
@@ -41,11 +43,33 @@ function ExercieMultWithHintsCheck({
   setAnswer_CheckNumberRight,
   setAnswer_CheckResultLeft,
   setAnswer_CheckResultRight,
+}: {
+  displayExample: boolean;
+  onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
+  example: generateExample__ForCheckMultiplication;
+  operator: string;
+  userAnswer: string;
+  onChangeUserAnswer: React.ChangeEventHandler<HTMLInputElement>;
+  onAnswer: () => void;
+  numberOf_Task: number;
+  showHints: boolean;
+  showPlusHints: boolean;
+  showMinusHints: boolean;
+  refNumber: number;
+  userAnswer_CheckNumberLeft: string;
+  userAnswer_CheckNumberRight: string;
+  userAnswer_CheckResultLeft: string;
+  userAnswer_CheckResultRight: string;
+
+  setAnswer_CheckNumberLeft: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswer_CheckNumberRight: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswer_CheckResultLeft: React.ChangeEventHandler<HTMLInputElement>;
+  setAnswer_CheckResultRight: React.ChangeEventHandler<HTMLInputElement>;
 }) {
   useEffect(() => {
     if (displayExample) {
       const userAnswer__input = document.getElementById('userAnswer');
-      userAnswer__input.focus();
+      userAnswer__input!.focus();
     }
   }, [displayExample]);
 
@@ -82,7 +106,7 @@ function ExercieMultWithHintsCheck({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberLeft > refNumber
-                        ? +example.numberLeft - refNumber
+                        ? `${example.numberLeft - refNumber}`
                         : ''
                     }
                   />
@@ -94,22 +118,22 @@ function ExercieMultWithHintsCheck({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberRight > refNumber
-                        ? example.numberRight - refNumber
+                        ? `${example.numberRight - refNumber}`
                         : ''
                     }
                   />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='center'></DescrCellMain>
+                  <DescrCellMain align='center'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
 
               <TableRow>
                 <TableCell>
-                  <DescrCellRoundRefNumber text={refNumber} />
+                  <DescrCellRoundRefNumber text={`${refNumber}`} />
                 </TableCell>
                 <TableCell>
                   <DescrCellMain align='center'>
@@ -139,7 +163,7 @@ function ExercieMultWithHintsCheck({
                         const userAnswer_CheckNumberLeft_input =
                           document.getElementById('userAnswer_CheckNumberLeft');
 
-                        userAnswer_CheckNumberLeft_input.focus();
+                        userAnswer_CheckNumberLeft_input!.focus();
                       }
                     }}
                   />
@@ -158,7 +182,7 @@ function ExercieMultWithHintsCheck({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberLeft < refNumber
-                        ? refNumber - example.numberLeft
+                        ? `${refNumber - example.numberLeft}`
                         : ''
                     }
                   />
@@ -170,16 +194,16 @@ function ExercieMultWithHintsCheck({
                   <DescrCellRoundHintNumber
                     text={
                       example && example.numberRight < refNumber
-                        ? refNumber - example.numberRight
+                        ? `${refNumber - example.numberRight}`
                         : ''
                     }
                   />
                 </TableCell>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='center'></DescrCellMain>
+                  <DescrCellMain align='center'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
 
@@ -193,7 +217,7 @@ function ExercieMultWithHintsCheck({
 
               <TableRow>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell
                   align='center'
@@ -213,7 +237,7 @@ function ExercieMultWithHintsCheck({
                             'userAnswer_CheckNumberRight'
                           );
 
-                        userAnswer_CheckNumberRight_input.focus();
+                        userAnswer_CheckNumberRight_input!.focus();
                       }
                     }}
                   />
@@ -235,7 +259,7 @@ function ExercieMultWithHintsCheck({
                         const userAnswer_CheckResultLeft_input =
                           document.getElementById('userAnswer_CheckResultLeft');
 
-                        userAnswer_CheckResultLeft_input.focus();
+                        userAnswer_CheckResultLeft_input!.focus();
                       }
                     }}
                   />
@@ -246,7 +270,7 @@ function ExercieMultWithHintsCheck({
 
               <TableRow>
                 <TableCell sx={{ pr: 0 }}>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell
                   align='center'
@@ -267,7 +291,7 @@ function ExercieMultWithHintsCheck({
                             'userAnswer_CheckResultRight'
                           );
 
-                        userAnswer_CheckResultRight_input.focus();
+                        userAnswer_CheckResultRight_input!.focus();
                       }
                     }}
                   />
@@ -290,7 +314,7 @@ function ExercieMultWithHintsCheck({
                         const answerButton =
                           document.getElementById('answerButton');
 
-                        answerButton.focus();
+                        answerButton!.focus();
                       }
                     }}
                   />
@@ -301,8 +325,8 @@ function ExercieMultWithHintsCheck({
                 <TableCell colSpan={8}>
                   <ButtonOk
                     id='answerButton'
-                    variant='contained'
                     onClick={onAnswer}
+                    tabIndex={undefined}
                     disabled={
                       userAnswer.length < 1 ||
                       userAnswer_CheckNumberLeft.length < 1 ||

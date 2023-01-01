@@ -14,22 +14,23 @@ import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
 import Paper from '@mui/material/Paper';
 
+import { I_exampleSimple_and_CheckAnswer_Obj } from '../../../interfaces/interfaces';
+
 function ReportResultAndCheck({
   displayStatistics,
   resultsList,
-  user,
-  onSaveResults,
   onContinue,
+}: {
+  displayStatistics: boolean;
+  resultsList: I_exampleSimple_and_CheckAnswer_Obj[];
+  onContinue: () => void;
 }) {
   useEffect(() => {
-    if (user && displayStatistics) {
-      const buttonSave = document.getElementById('buttonSave');
-      buttonSave.focus();
-    } else if (!user && displayStatistics) {
+    if (displayStatistics) {
       const buttonRepeat = document.getElementById('buttonRepeat');
-      buttonRepeat.focus();
+      buttonRepeat!.focus();
     }
-  }, [user, displayStatistics]);
+  }, [displayStatistics]);
 
   return (
     <Grid item sx={{ display: displayStatistics ? 'block' : 'none' }}>
@@ -129,7 +130,7 @@ function ReportResultAndCheck({
                           variant='h6'
                           align='center'
                           color={
-                            item.userAnswer - item.resultRight === 0
+                            Number(item.userAnswer) - item.resultRight === 0
                               ? 'success.main'
                               : 'error.main'
                           }
@@ -157,7 +158,7 @@ function ReportResultAndCheck({
                           variant='h6'
                           align='center'
                           color={
-                            item.userAnswer_CheckNumberLeft -
+                            Number(item.userAnswer_CheckNumberLeft) -
                               item.checkNumberLeft ===
                             0
                               ? 'success.main'
@@ -187,7 +188,7 @@ function ReportResultAndCheck({
                           variant='h6'
                           align='center'
                           color={
-                            item.userAnswer_CheckNumberRight -
+                            Number(item.userAnswer_CheckNumberRight) -
                               item.checkNumberRight ===
                             0
                               ? 'success.main'
@@ -217,7 +218,7 @@ function ReportResultAndCheck({
                           variant='h6'
                           align='center'
                           color={
-                            item.userAnswer_CheckResultLeft -
+                            Number(item.userAnswer_CheckResultLeft) -
                               item.checkResultLeft ===
                             0
                               ? 'success.main'
@@ -247,7 +248,7 @@ function ReportResultAndCheck({
                           variant='h6'
                           align='center'
                           color={
-                            item.userAnswer_CheckResultRight -
+                            Number(item.userAnswer_CheckResultRight) -
                               item.checkResultRight ===
                             0
                               ? 'success.main'
@@ -286,20 +287,6 @@ function ReportResultAndCheck({
                   flexDirection='column-reverse'
                 >
                   <Grid item sx={{ width: '100%' }}>
-                    <ButtonSave
-                      disabled={!user}
-                      onClick={onSaveResults}
-                      id='buttonSave'
-                    >
-                      {user
-                        ? 'Сохранить результаты'
-                        : 'Не возможно сохранить результаты - вы не авторизованы'}
-                    </ButtonSave>
-                  </Grid>
-                  <Grid
-                    item
-                    sx={{ display: !user ? 'block' : 'none', width: '100%' }}
-                  >
                     <ButtonRepeat onClick={onContinue} id='buttonRepeat' />
                   </Grid>
                 </Grid>
