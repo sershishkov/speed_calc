@@ -11,7 +11,9 @@ import ExerciseHeader from '../../ui/description/ExerciseHeader';
 
 import InputDigitDivisionQuotient from '../../ui/inputs/InputDigitDivisionQuotient';
 
-function WrapForInputResult({ children }) {
+import { generateExample__MultBy } from '../../../utils/generateExample';
+
+function WrapForInputResult({ children }: { children: React.ReactNode }) {
   return (
     <Grid
       item
@@ -38,11 +40,25 @@ function ExerciseMultBy({
   userDigit_5,
   userDigit_6,
   userDigit_7,
+}: {
+  displayExample: boolean;
+  onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
+  example: generateExample__MultBy;
+  onAnswer: () => void;
+  onChangeUserAnswers: React.ChangeEventHandler<HTMLInputElement>;
+  numberOf_Task: number;
+  userDigit_1: string;
+  userDigit_2: string;
+  userDigit_3: string;
+  userDigit_4: string;
+  userDigit_5: string;
+  userDigit_6: string;
+  userDigit_7: string;
 }) {
   useEffect(() => {
     if (displayExample) {
       const userDigit = document.getElementById('userDigit_7');
-      userDigit.focus();
+      userDigit!.focus();
     }
   }, [displayExample]);
   return (
@@ -110,7 +126,7 @@ function ExerciseMultBy({
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const answerButton = document.getElementById('answerButton');
-                  answerButton.focus();
+                  answerButton!.focus();
                 }
               }}
             />
@@ -125,7 +141,7 @@ function ExerciseMultBy({
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit = document.getElementById('userDigit_1');
-                  userDigit.focus();
+                  userDigit!.focus();
                 }
               }}
             />
@@ -140,7 +156,7 @@ function ExerciseMultBy({
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit = document.getElementById('userDigit_2');
-                  userDigit.focus();
+                  userDigit!.focus();
                 }
               }}
             />
@@ -155,7 +171,7 @@ function ExerciseMultBy({
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit = document.getElementById('userDigit_3');
-                  userDigit.focus();
+                  userDigit!.focus();
                 }
               }}
             />
@@ -170,7 +186,7 @@ function ExerciseMultBy({
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit = document.getElementById('userDigit_4');
-                  userDigit.focus();
+                  userDigit!.focus();
                 }
               }}
             />
@@ -185,7 +201,7 @@ function ExerciseMultBy({
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit = document.getElementById('userDigit_5');
-                  userDigit.focus();
+                  userDigit!.focus();
                 }
               }}
             />
@@ -200,14 +216,13 @@ function ExerciseMultBy({
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const userDigit = document.getElementById('userDigit_6');
-                  userDigit.focus();
+                  userDigit!.focus();
                 }
               }}
             />
           </WrapForInputResult>
         </Grid>
-        <Typography></Typography>
-        <Typography></Typography>
+
         <Box
           sx={{
             gridColumn: '1 / 4',
@@ -215,7 +230,6 @@ function ExerciseMultBy({
         >
           <ButtonOk
             id='answerButton'
-            variant='contained'
             onClick={onAnswer}
             tabIndex={8}
             disabled={
