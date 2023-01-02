@@ -76,3 +76,14 @@ export interface I_ExampleStarOrDot_Level_7 {
   color?: string;
   dots?: string;
 }
+
+export interface I_example_SimplDivWithRest_Obj {
+  example: string;
+  userResult: string;
+  userAnswerRem: string;
+
+  resultRight: number;
+  reminderOfDivision: number;
+
+  doneExcercise: boolean;
+}

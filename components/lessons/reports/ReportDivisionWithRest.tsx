@@ -14,22 +14,23 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TableFooter from '@mui/material/TableFooter';
 
+import { I_example_SimplDivWithRest_Obj } from '../../../interfaces/interfaces';
+
 function ReportDivisionWithRest({
   displayStatistics,
   resultsList,
-  user,
-  onSaveResults,
   onContinue,
+}: {
+  displayStatistics: boolean;
+  resultsList: I_example_SimplDivWithRest_Obj[];
+  onContinue: () => void;
 }) {
   useEffect(() => {
-    if (user && displayStatistics) {
-      const buttonSave = document.getElementById('buttonSave');
-      buttonSave.focus();
-    } else if (!user && displayStatistics) {
+    if (displayStatistics) {
       const buttonRepeat = document.getElementById('buttonRepeat');
-      buttonRepeat.focus();
+      buttonRepeat!.focus();
     }
-  }, [user, displayStatistics]);
+  }, [displayStatistics]);
   return (
     <Grid item sx={{ display: displayStatistics ? 'block' : 'none' }}>
       <Typography variant='h4' align='center'>
@@ -111,7 +112,7 @@ function ReportDivisionWithRest({
                           variant='h6'
                           align='center'
                           color={
-                            item.userResult - item.resultRight === 0
+                            Number(item.userResult) - item.resultRight === 0
                               ? 'success.main'
                               : 'error.main'
                           }
@@ -134,7 +135,9 @@ function ReportDivisionWithRest({
                           variant='h6'
                           align='center'
                           color={
-                            item.userAnswerRem - item.reminderOfDivision === 0
+                            Number(item.userAnswerRem) -
+                              item.reminderOfDivision ===
+                            0
                               ? 'success.main'
                               : 'error.main'
                           }
@@ -171,20 +174,6 @@ function ReportDivisionWithRest({
                   flexDirection='column-reverse'
                 >
                   <Grid item sx={{ width: '100%' }}>
-                    <ButtonSave
-                      disabled={!user}
-                      onClick={onSaveResults}
-                      id='buttonSave'
-                    >
-                      {user
-                        ? 'Сохранить результаты'
-                        : 'Не возможно сохранить результаты - вы не авторизованы'}
-                    </ButtonSave>
-                  </Grid>
-                  <Grid
-                    item
-                    sx={{ display: !user ? 'block' : 'none', width: '100%' }}
-                  >
                     <ButtonRepeat onClick={onContinue} id='buttonRepeat' />
                   </Grid>
                 </Grid>

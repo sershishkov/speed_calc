@@ -20,7 +20,12 @@ import InputDividentHint from '../../ui/inputs/InputDividentHint';
 import InputDigitDivisionQuotient from '../../ui/inputs/InputDigitDivisionQuotient';
 import InputNumberDivisionRem from '../../ui/inputs/InputNumberDivisionRem';
 
-function WrapForInputQuatent({ children }) {
+import {
+  genExample__DivBySimpleNumber,
+  genExample__DivByMultipliers,
+} from '../../../utils/generateExample';
+
+function WrapForInputQuatent({ children }: { children: React.ReactNode }) {
   return (
     <Grid
       item
@@ -72,20 +77,58 @@ function ExerciseDivisionSimple({
   dividentHint5,
   dividentHint6,
   dividentHint7,
+}: {
+  displayExample: boolean;
+  onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
+  example: genExample__DivBySimpleNumber | genExample__DivByMultipliers;
+  onAnswer: () => void;
+  numberOf_Task: number;
+  arrOfDivident: string[];
+  onChangeUserAnswers: React.ChangeEventHandler<HTMLInputElement>;
+  tempUserDigit_1: string;
+  tempUserDigit_2: string;
+  tempUserDigit_3: string;
+  tempUserDigit_4: string;
+  tempUserDigit_5: string;
+  tempUserDigit_6: string;
+  tempUserDigit_7: string;
+  tempAnswerRem_1: string;
+  tempAnswerRem_2: string;
+  userAnswerRem: string;
+  userDigit_1: string;
+  userDigit_2: string;
+  userDigit_3: string;
+  userDigit_4: string;
+  userDigit_5: string;
+  userDigit_6: string;
+  userDigit_7: string;
+  showMiddleRow: boolean;
+  dividentHintTemp2: string;
+  dividentHintTemp3: string;
+  dividentHintTemp4: string;
+  dividentHintTemp5: string;
+  dividentHintTemp6: string;
+  dividentHintTemp7: string;
+  dividentHint2: string;
+  dividentHint3: string;
+  dividentHint4: string;
+  dividentHint5: string;
+  dividentHint6: string;
+  dividentHint7: string;
 }) {
   useEffect(() => {
     if (displayExample && showMiddleRow) {
       const tempUserDigit_1__input = document.getElementById('tempUserDigit_1');
-      tempUserDigit_1__input.focus();
+      tempUserDigit_1__input!.focus();
     } else if (displayExample && !showMiddleRow) {
       const userDigit_1_Input = document.getElementById('userDigit_1');
 
-      userDigit_1_Input.focus();
+      userDigit_1_Input!.focus();
     }
   }, [displayExample, showMiddleRow]);
 
   const arrDividentHints = [
-    null,
+    '',
     dividentHint2,
     dividentHint3,
     dividentHint4,
@@ -123,7 +166,9 @@ function ExerciseDivisionSimple({
                 <TableCell>
                   <DividerSimple>
                     {example && showMiddleRow
-                      ? `${example.divider_1}`
+                      ? example instanceof genExample__DivByMultipliers
+                        ? `${example.divider_1}`
+                        : '0'
                       : example && !showMiddleRow
                       ? `${example.divider_Total}`
                       : ''}
@@ -158,7 +203,8 @@ function ExerciseDivisionSimple({
                           <InputDividentHint
                             name={`dividentHint${index + 1}`}
                             id={`dividentHint${index + 1}`}
-                            display={index === 0 ? 'none' : 'block'}
+                            display={index === 0 ? false : true}
+                            top='-1rem'
                             value={
                               arrDividentHints && arrDividentHints[index]
                                 ? arrDividentHints[index]
@@ -171,12 +217,12 @@ function ExerciseDivisionSimple({
                                   const tempUserDigit = document.getElementById(
                                     `tempUserDigit_${index + 1}`
                                   );
-                                  tempUserDigit.focus();
+                                  tempUserDigit!.focus();
                                 } else {
                                   const userDigit = document.getElementById(
                                     `userDigit_${index + 1}`
                                   );
-                                  userDigit.focus();
+                                  userDigit!.focus();
                                 }
                               }
                             }}
@@ -209,7 +255,9 @@ function ExerciseDivisionSimple({
               >
                 <TableCell>
                   <DividerSimple>
-                    {example ? `${example.divider_2}` : ''}
+                    {example instanceof genExample__DivByMultipliers
+                      ? `${example.divider_2}`
+                      : ''}
                   </DividerSimple>
                 </TableCell>
                 <TableCell
@@ -236,7 +284,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const dividentHint =
                               document.getElementById('dividentHint2');
-                            dividentHint.focus();
+                            dividentHint!.focus();
                           }
                         }}
                       />
@@ -245,6 +293,7 @@ function ExerciseDivisionSimple({
                       <InputDividentHint
                         name='dividentHintTemp2'
                         id='dividentHintTemp2'
+                        display={true}
                         top='-1rem'
                         value={dividentHintTemp2 ? dividentHintTemp2 : ''}
                         onChange={onChangeUserAnswers}
@@ -252,7 +301,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const userDigit =
                               document.getElementById('userDigit_2');
-                            userDigit.focus();
+                            userDigit!.focus();
                           }
                         }}
                         tabIndex={16}
@@ -268,7 +317,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const dividentHint =
                               document.getElementById('dividentHint3');
-                            dividentHint.focus();
+                            dividentHint!.focus();
                           }
                         }}
                       />
@@ -277,6 +326,7 @@ function ExerciseDivisionSimple({
                       <InputDividentHint
                         name='dividentHintTemp3'
                         id='dividentHintTemp3'
+                        display={true}
                         top='-1rem'
                         value={dividentHintTemp3 ? dividentHintTemp3 : ''}
                         onChange={onChangeUserAnswers}
@@ -284,7 +334,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const userDigit =
                               document.getElementById('userDigit_3');
-                            userDigit.focus();
+                            userDigit!.focus();
                           }
                         }}
                         tabIndex={18}
@@ -299,7 +349,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const dividentHint =
                               document.getElementById('dividentHint4');
-                            dividentHint.focus();
+                            dividentHint!.focus();
                           }
                         }}
                       />
@@ -308,6 +358,7 @@ function ExerciseDivisionSimple({
                       <InputDividentHint
                         name='dividentHintTemp4'
                         id='dividentHintTemp4'
+                        display={true}
                         top='-1rem'
                         value={dividentHintTemp4 ? dividentHintTemp4 : ''}
                         onChange={onChangeUserAnswers}
@@ -315,7 +366,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const userDigit =
                               document.getElementById('userDigit_4');
-                            userDigit.focus();
+                            userDigit!.focus();
                           }
                         }}
                         tabIndex={20}
@@ -330,7 +381,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const dividentHint =
                               document.getElementById('dividentHint5');
-                            dividentHint.focus();
+                            dividentHint!.focus();
                           }
                         }}
                       />
@@ -339,6 +390,7 @@ function ExerciseDivisionSimple({
                       <InputDividentHint
                         name='dividentHintTemp5'
                         id='dividentHintTemp5'
+                        display={true}
                         top='-1rem'
                         value={dividentHintTemp5 ? dividentHintTemp5 : ''}
                         onChange={onChangeUserAnswers}
@@ -346,7 +398,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const userDigit =
                               document.getElementById('userDigit_5');
-                            userDigit.focus();
+                            userDigit!.focus();
                           }
                         }}
                         tabIndex={22}
@@ -361,7 +413,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const dividentHint =
                               document.getElementById('dividentHint6');
-                            dividentHint.focus();
+                            dividentHint!.focus();
                           }
                         }}
                       />
@@ -370,6 +422,7 @@ function ExerciseDivisionSimple({
                       <InputDividentHint
                         name='dividentHintTemp6'
                         id='dividentHintTemp6'
+                        display={true}
                         top='-1rem'
                         value={dividentHintTemp6 ? dividentHintTemp6 : ''}
                         onChange={onChangeUserAnswers}
@@ -377,7 +430,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const userDigit =
                               document.getElementById('userDigit_6');
-                            userDigit.focus();
+                            userDigit!.focus();
                           }
                         }}
                         tabIndex={24}
@@ -392,7 +445,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const dividentHint =
                               document.getElementById('dividentHint7');
-                            dividentHint.focus();
+                            dividentHint!.focus();
                           }
                         }}
                       />
@@ -401,6 +454,7 @@ function ExerciseDivisionSimple({
                       <InputDividentHint
                         name='dividentHintTemp7'
                         id='dividentHintTemp7'
+                        display={true}
                         top='-1rem'
                         value={dividentHintTemp7 ? dividentHintTemp7 : ''}
                         onChange={onChangeUserAnswers}
@@ -408,7 +462,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const userDigit =
                               document.getElementById('userDigit_7');
-                            userDigit.focus();
+                            userDigit!.focus();
                           }
                         }}
                         tabIndex={26}
@@ -424,7 +478,7 @@ function ExerciseDivisionSimple({
                           if (e.key === 'Enter') {
                             const userAnswerRem_Input =
                               document.getElementById('tempAnswerRem_1');
-                            userAnswerRem_Input.focus();
+                            userAnswerRem_Input!.focus();
                           }
                         }}
                       />
@@ -447,7 +501,7 @@ function ExerciseDivisionSimple({
                       if (e.key === 'Enter' || e.key === 'Tab') {
                         const input = document.getElementById('userDigit_1');
 
-                        input.focus();
+                        input!.focus();
                       }
                     }}
                   />
@@ -476,11 +530,11 @@ function ExerciseDivisionSimple({
                             if (showMiddleRow) {
                               const dividentHint =
                                 document.getElementById('dividentHintTemp2');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             } else {
                               const dividentHint =
                                 document.getElementById('dividentHint2');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             }
                           }
                         }}
@@ -499,11 +553,11 @@ function ExerciseDivisionSimple({
                             if (showMiddleRow) {
                               const dividentHint =
                                 document.getElementById('dividentHintTemp3');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             } else {
                               const dividentHint =
                                 document.getElementById('dividentHint3');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             }
                           }
                         }}
@@ -522,11 +576,11 @@ function ExerciseDivisionSimple({
                             if (showMiddleRow) {
                               const dividentHint =
                                 document.getElementById('dividentHintTemp4');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             } else {
                               const dividentHint =
                                 document.getElementById('dividentHint4');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             }
                           }
                         }}
@@ -545,11 +599,11 @@ function ExerciseDivisionSimple({
                             if (showMiddleRow) {
                               const dividentHint =
                                 document.getElementById('dividentHintTemp5');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             } else {
                               const dividentHint =
                                 document.getElementById('dividentHint5');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             }
                           }
                         }}
@@ -568,11 +622,11 @@ function ExerciseDivisionSimple({
                             if (showMiddleRow) {
                               const dividentHint =
                                 document.getElementById('dividentHintTemp6');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             } else {
                               const dividentHint =
                                 document.getElementById('dividentHint6');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             }
                           }
                         }}
@@ -591,11 +645,11 @@ function ExerciseDivisionSimple({
                             if (showMiddleRow) {
                               const dividentHint =
                                 document.getElementById('dividentHintTemp7');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             } else {
                               const dividentHint =
                                 document.getElementById('dividentHint7');
-                              dividentHint.focus();
+                              dividentHint!.focus();
                             }
                           }
                         }}
@@ -613,11 +667,11 @@ function ExerciseDivisionSimple({
                             if (showMiddleRow) {
                               const userAnswerRem_Input =
                                 document.getElementById('tempAnswerRem_2');
-                              userAnswerRem_Input.focus();
+                              userAnswerRem_Input!.focus();
                             } else {
                               const userAnswerRem_Input =
                                 document.getElementById('userAnswerRem');
-                              userAnswerRem_Input.focus();
+                              userAnswerRem_Input!.focus();
                             }
                           }
                         }}
@@ -642,7 +696,7 @@ function ExerciseDivisionSimple({
                         const userAnswerRem =
                           document.getElementById('userAnswerRem');
 
-                        userAnswerRem.focus();
+                        userAnswerRem!.focus();
                       }
                     }}
                   />
@@ -673,7 +727,7 @@ function ExerciseDivisionSimple({
                         const onAnswer_Button =
                           document.getElementById('answerButton');
 
-                        onAnswer_Button.focus();
+                        onAnswer_Button!.focus();
                       }
                     }}
                   />
@@ -684,7 +738,6 @@ function ExerciseDivisionSimple({
                 <TableCell colSpan={3}>
                   <ButtonOk
                     id='answerButton'
-                    variant='contained'
                     onClick={onAnswer}
                     tabIndex={showMiddleRow ? 30 : 15}
                     disabled={

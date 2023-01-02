@@ -18,9 +18,9 @@ function InputDividentHint({
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
   tabIndex: number;
-  display: string;
+  display: boolean;
   top: string;
-  left: string;
+  left?: string;
 }) {
   return (
     <TextField
@@ -48,7 +48,7 @@ function InputDividentHint({
           display: 'none',
         },
         input: {
-          display: display,
+          display: display ? 'block' : 'none',
           position: 'absolute',
           top: top,
           left: left,
@@ -59,7 +59,7 @@ function InputDividentHint({
           fontSize: '0.8rem',
           border: '1px solid blue',
           borderRadius: '50%',
-          color: 'blue',
+          // color: 'blue',
 
           '&:focus , &:active,&:hover': {
             border: '1px solid green',

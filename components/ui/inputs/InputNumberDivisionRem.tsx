@@ -16,7 +16,7 @@ function InputNumberDivisionRem({
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   onKeyPress: React.KeyboardEventHandler<HTMLInputElement>;
   tabIndex: number;
-  display: string;
+  display: boolean;
 }) {
   return (
     <TextField
@@ -41,7 +41,7 @@ function InputNumberDivisionRem({
       sx={{
         div: {},
         fieldset: {
-          display: 'none',
+          display: display ? 'block' : 'none',
         },
         input: {
           display: display ? 'block' : 'none',
