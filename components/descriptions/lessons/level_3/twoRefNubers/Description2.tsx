@@ -234,9 +234,10 @@ function Description() {
           row_4_hintMinusLeft='3'
           row_4_hintMinusRight='2'
           row_4_valueToMinus='+6'
-          row_5_hintMinusLeft={
-            <span style={{ fontSize: '2rem' }}>&frac34;</span>
-          }
+          row_5_hintMinusLeft='&frac34;'
+          // row_5_hintMinusLeft={
+          //   <span style={{ fontSize: '2rem' }}>&frac34;</span>
+          // }
           row_result_valueResult='2231'
           displayRow_1={false}
           displayRow_2={false}
@@ -258,9 +259,10 @@ function Description() {
           row_2_hintPlusLeft=''
           row_2_hintPlusRight=''
           row_2_valueToAdd=''
-          row_main_refNumber={
-            <span style={{ fontSize: '1.2rem' }}>100x3.5</span>
-          }
+          row_main_refNumber='100x3.5'
+          // row_main_refNumber={
+          //   <span style={{ fontSize: '1.2rem' }}>100x3.5</span>
+          // }
           row_main_numberLeft='88'
           row_main_numberRight='343'
           row_main_valueIntermediate=''
@@ -290,9 +292,10 @@ function Description() {
           row_2_hintPlusLeft=''
           row_2_hintPlusRight=''
           row_2_valueToAdd=''
-          row_main_refNumber={
-            <span style={{ fontSize: '1.2rem' }}>100x3.5</span>
-          }
+          row_main_refNumber='100x3.5'
+          // row_main_refNumber={
+          //   <span style={{ fontSize: '1.2rem' }}>100x3.5</span>
+          // }
           row_main_numberLeft='88'
           row_main_numberRight='343'
           row_main_valueIntermediate='30100'
