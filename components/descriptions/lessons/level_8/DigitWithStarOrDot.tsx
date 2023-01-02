@@ -14,7 +14,7 @@ function DigitWithStarOrDot({
   color: string;
   dots: string;
 }) {
-  console.log(dots);
+  // console.log(dots);
   return (
     <Grid
       item
