@@ -1,11 +1,13 @@
-import NumberForAdditionColumn from '../../../components/ui/excerises/NumberForAdditionColumn';
-import InputDigitForAddingColumn from '../../../components/ui/inputs/InputDigitForAddingColumn';
+import NumberForAdditionColumn from '../../ui/excerises/NumberForAdditionColumn';
+import InputDigitForAddingColumn from '../../ui/inputs/InputDigitForAddingColumn';
 import Grid from '@mui/material/Grid';
 import React, { useEffect } from 'react';
 
 import ButtonStop from '../../ui/buttons/ButtonStop';
 import ButtonOk from '../../ui/buttons/ButtonOk';
 import ExerciseHeader from '../../ui/description/ExerciseHeader';
+
+import { generateExample__AddMultSub } from '../../../utils/generateExample';
 
 function ExerciseColumnAdding({
   displayExample,
@@ -21,11 +23,25 @@ function ExerciseColumnAdding({
   onAnswer,
   numberOf_Task,
   onStopExercise,
+}: {
+  displayExample: boolean;
+  onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
+  example: generateExample__AddMultSub;
+  onChangeUserAnswers: React.ChangeEventHandler<HTMLInputElement>;
+  userDigit_1: string;
+  userDigit_2: string;
+  userDigit_3: string;
+  userDigit_4: string;
+  userDigit_5: string;
+  userDigit_6: string;
+  userDigit_7: string;
+  onAnswer: () => void;
+  numberOf_Task: number;
 }) {
   useEffect(() => {
     if (displayExample) {
       const userDigit_7 = document.getElementById('userDigit_7');
-      userDigit_7.focus();
+      userDigit_7!.focus();
     }
   }, [displayExample]);
   return (
@@ -87,7 +103,6 @@ function ExerciseColumnAdding({
             alignItems='center'
           >
             <InputDigitForAddingColumn
-              type='number'
               name='userDigit_1'
               id='userDigit_1'
               value={userDigit_1}
@@ -96,13 +111,12 @@ function ExerciseColumnAdding({
               onKeyPress={(e) => {
                 if (e.key === 'Enter') {
                   const answerButton = document.getElementById('answerButton');
-                  answerButton.focus();
+                  answerButton!.focus();
                 }
               }}
             />
 
             <InputDigitForAddingColumn
-              type='number'
               name='userDigit_2'
               id='userDigit_2'
               value={userDigit_2}
@@ -112,13 +126,12 @@ function ExerciseColumnAdding({
                 if (e.key === 'Enter') {
                   const userDigit_1_Input =
                     document.getElementById('userDigit_1');
-                  userDigit_1_Input.focus();
+                  userDigit_1_Input!.focus();
                 }
               }}
             />
 
             <InputDigitForAddingColumn
-              type='number'
               name='userDigit_3'
               id='userDigit_3'
               value={userDigit_3}
@@ -128,13 +141,12 @@ function ExerciseColumnAdding({
                 if (e.key === 'Enter') {
                   const userDigit_2_Input =
                     document.getElementById('userDigit_2');
-                  userDigit_2_Input.focus();
+                  userDigit_2_Input!.focus();
                 }
               }}
             />
 
             <InputDigitForAddingColumn
-              type='number'
               name='userDigit_4'
               id='userDigit_4'
               value={userDigit_4}
@@ -144,13 +156,12 @@ function ExerciseColumnAdding({
                 if (e.key === 'Enter') {
                   const userDigit_3_Input =
                     document.getElementById('userDigit_3');
-                  userDigit_3_Input.focus();
+                  userDigit_3_Input!.focus();
                 }
               }}
             />
 
             <InputDigitForAddingColumn
-              type='number'
               name='userDigit_5'
               id='userDigit_5'
               value={userDigit_5}
@@ -160,13 +171,12 @@ function ExerciseColumnAdding({
                 if (e.key === 'Enter') {
                   const userDigit_4_Input =
                     document.getElementById('userDigit_4');
-                  userDigit_4_Input.focus();
+                  userDigit_4_Input!.focus();
                 }
               }}
             />
 
             <InputDigitForAddingColumn
-              type='number'
               name='userDigit_6'
               id='userDigit_6'
               value={userDigit_6}
@@ -176,13 +186,12 @@ function ExerciseColumnAdding({
                 if (e.key === 'Enter') {
                   const userDigit_5_Input =
                     document.getElementById('userDigit_5');
-                  userDigit_5_Input.focus();
+                  userDigit_5_Input!.focus();
                 }
               }}
             />
 
             <InputDigitForAddingColumn
-              type='number'
               name='userDigit_7'
               id='userDigit_7'
               value={userDigit_7}
@@ -192,7 +201,7 @@ function ExerciseColumnAdding({
                 if (e.key === 'Enter') {
                   const userDigit_6_Input =
                     document.getElementById('userDigit_6');
-                  userDigit_6_Input.focus();
+                  userDigit_6_Input!.focus();
                 }
               }}
             />
@@ -208,9 +217,9 @@ function ExerciseColumnAdding({
         >
           <ButtonOk
             id='answerButton'
-            variant='contained'
             onClick={onAnswer}
             disabled={userDigit_7.length < 1}
+            tabIndex={undefined}
           >
             {numberOf_Task}
           </ButtonOk>
