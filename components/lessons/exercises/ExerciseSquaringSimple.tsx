@@ -20,6 +20,11 @@ import InputUserAnswerSimple from '../../ui/inputs/InputUserAnswerSimple';
 // import HintOperator from '../../ui/excerises/HintOperator';
 import NumberPower from '../../ui/excerises/NumberPower';
 
+import {
+  genExample__SquaringEnding_5,
+  genExample__SquaringCloseTo_,
+} from '../../../utils/generateExample';
+
 function ExerciseSquaringSimple({
   displayExample,
   onStopExercise,
@@ -30,11 +35,21 @@ function ExerciseSquaringSimple({
   numberOf_Task,
   showHints,
   refNumber,
+}: {
+  displayExample: boolean;
+  onStopExercise: React.MouseEventHandler<HTMLButtonElement>;
+  example: genExample__SquaringEnding_5 | genExample__SquaringCloseTo_;
+  userAnswer: string;
+  onChangeUserAnswer: React.ChangeEventHandler<HTMLInputElement>;
+  onAnswer: () => void;
+  numberOf_Task: number;
+  showHints: boolean;
+  refNumber: number;
 }) {
   useEffect(() => {
     if (displayExample) {
       const userAnswer__input = document.getElementById('userAnswer');
-      userAnswer__input.focus();
+      userAnswer__input!.focus();
     }
   }, [displayExample]);
   return (
@@ -72,10 +87,10 @@ function ExerciseSquaringSimple({
                 </TableCell>
 
                 <TableCell>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
 
@@ -103,7 +118,6 @@ function ExerciseSquaringSimple({
                   <InputUserAnswerSimple
                     name='userAnswer'
                     label='Ответ'
-                    type='number'
                     id='userAnswer'
                     value={userAnswer}
                     onChange={onChangeUserAnswer}
@@ -111,7 +125,7 @@ function ExerciseSquaringSimple({
                       if (e.key === 'Enter') {
                         const onAnswer_Button =
                           document.getElementById('answerButton');
-                        onAnswer_Button.focus();
+                        onAnswer_Button!.focus();
                       }
                     }}
                   />
@@ -133,10 +147,10 @@ function ExerciseSquaringSimple({
                 </TableCell>
 
                 <TableCell>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
                 <TableCell>
-                  <DescrCellMain align='right'></DescrCellMain>
+                  <DescrCellMain align='right'>{''}</DescrCellMain>
                 </TableCell>
               </TableRow>
 
@@ -144,9 +158,9 @@ function ExerciseSquaringSimple({
                 <TableCell colSpan={4}>
                   <ButtonOk
                     id='answerButton'
-                    variant='contained'
                     onClick={onAnswer}
                     disabled={userAnswer.length < 1}
+                    tabIndex={undefined}
                   >
                     {numberOf_Task}
                   </ButtonOk>
