@@ -19,7 +19,7 @@ function Navbar() {
   const [themeChecked, set__themeChecked] = useState<boolean>(false);
 
   useEffect(() => {
-    const is_dark = JSON.parse(localStorage.getItem('theme')!);
+    const is_dark = JSON.parse(localStorage.getItem('theme')!) ?? true;
     dispatch(set_theme_mode(is_dark));
     set__themeChecked(is_dark);
   }, [dispatch]);
